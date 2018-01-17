@@ -30,7 +30,7 @@ WORKDIR /ng-app
 COPY . .
 
 ## Build the angular app in production mode and store the artifacts in dist folder
-RUN $(npm bin)/ng build --prod --build-optimizer
+RUN \$(npm bin)/ng build --prod --build-optimizer
 
 
 ### STAGE 2: Setup ###
@@ -86,4 +86,4 @@ cd ng-app
 docker build -t $DOCKER_HUB_USER/$DOCKER_HUB_REPO:$VERSION .
 
 # Run it (to test)
-docker run -d -p 8080:80 $DOCKER_HUB_USER/$DOCKER_HUB_REPO:$VERSION
+#docker run -d -p 8080:80 $DOCKER_HUB_USER/$DOCKER_HUB_REPO:$VERSION
