@@ -1,0 +1,4 @@
+/ng-app/*
+!/ng-app/Dockerfile
+!/ng-app/nginx
+!/ng-app/nginx/*
