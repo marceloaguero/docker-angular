@@ -7,6 +7,10 @@ VERSION="latest"
 rm -fr ng-app
 mkdir ng-app
 
+# Run a nodejs docker container. Install angular cli.
+# Then initialize a basic angular app in it
+docker run -it -v ng-app:/ng-app node:carbon-alpine npm install -g @angular/cli && ng new ng-app --skip-install
+
 # Create Dockerfile
 cat <<EOF >ng-app/Dockerfile
 ### STAGE 1: Build ###
@@ -76,10 +80,6 @@ server {
 
 }
 EOF
-
-# Run a nodejs docker container. Install angular cli.
-# Then initialize a basic angular app in it
-docker run -it -v ng-app:/ng-app node:carbon-alpine npm install -g @angular/cli && ng new ng-app --skip-install
 
 # Build docker image
 cd ng-app
