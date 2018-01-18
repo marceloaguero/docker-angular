@@ -1,0 +1,15 @@
+version: '3'
+
+services:
+
+  ng-app:
+    build:
+      context: ./ng-app
+    environment:
+      NODE_ENV: dev
+      HTTPS_METHOD: noredirect # support both http and https
+    volumes:
+      - .:/ng-app
+    ports:
+      - "4200:4200"
+    restart: unless-stopped

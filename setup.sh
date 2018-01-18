@@ -12,6 +12,7 @@ mkdir ng-app
 docker run -it -v ng-app:/ng-app node:carbon-alpine npm install -g @angular/cli && ng new ng-app --skip-git --skip-install
 
 # Copy Dockerfiles
+cp Dockerfile ng-app/
 cp Dockerfile.prod ng-app/
 
 # Copy nginx configuration
