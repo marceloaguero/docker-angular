@@ -9,7 +9,7 @@ mkdir ng-app
 
 # Run a nodejs docker container. Install angular cli.
 # Then initialize a basic angular app in it
-docker run -it -v ng-app:/ng-app node:carbon-alpine npm install -g @angular/cli && ng new ng-app --skip-git --skip-install
+docker run -it -v ng-app:/ng-app node:carbon-alpine npm install -g @angular/cli && ng new ng-app --skip-install
 
 # Copy Dockerfiles
 cp Dockerfile ng-app/
