@@ -1,12 +1,16 @@
 FROM node:carbon-alpine
 
-COPY package.json ./
-
-## Storing node modules on a separate layer will prevent unnecessary npm installs at each build
-RUN npm i && mkdir /ng-app && cp -R ./node_modules ./ng-app
-
 WORKDIR /ng-app
+
+COPY package.json .
+
+RUN npm set progress=false \
+ && npm config set depth 0 \
+ && npm cache clean --force \
+ && npm install
+ 
 COPY . .
-VOLUME /ng-app
+
 EXPOSE 4200
-CMD $(npm bin)/ng serve --watch
+
+CMD $(npm bin)/ng serve --host 0.0.0.0 --watch
